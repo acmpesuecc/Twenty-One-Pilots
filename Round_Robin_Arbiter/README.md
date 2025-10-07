@@ -18,7 +18,7 @@ module Round_Robin_Arbiter (
 );
 ```
 
-## Challenge
+## Additional Challenge
 
-Design a parameterized round-robin arbiter. (They really tried lol).
+Design a parameterized round-robin arbiter.
 

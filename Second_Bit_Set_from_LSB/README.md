@@ -8,7 +8,7 @@ Design and verify a module which finds the second bit set from LSB for a N-bit v
 
 The module should have the following interface:
 
-```
+```SystemVerilog
 module Second_Bit_Set_from_LSB #(
   parameter WIDTH = 12
 )(

@@ -5,7 +5,7 @@ Design and verify a parameterized synchronous fifo. Both the depth and data widt
 ## Interface Definition
 The module should have the following interface:
 
-```
+```SystemVerilog
 module Synchronous_FIFO #(
   parameter DEPTH   = 4,
   parameter DATA_W  = 1

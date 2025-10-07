@@ -7,7 +7,7 @@ Design and verify a valid/ready based memory interface slave. The interface shou
 - Valid/ready protocol must be honoured
 - The module should have the following interface:
 
-```
+```SystemVerilog
 module Simple_Memory_Interface (
   input       wire        clk,
   input       wire        reset,
