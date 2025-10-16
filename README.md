@@ -14,22 +14,8 @@ Maintainer : [Pranav M](https://github.com/pranav0x0112)
 >└─ waveform.png <- Screenshot showing module works
 >```
 
-## Submission Guidelines
-
-**Mandatory for all modules:**
-1. RTL code (`rtl.sv`)
-2. Testbench (`tb.sv`)
-3. Waveform screenshot showing your module works
-
-**Optional / Bonus Points:**
-1. Self-checking testbench
-2. Layered testbench (advanced verification)
-
-**Workflow:**
-1. Fork the repo
-2. Complete your assigned module
-3. Submit a Pull Request (PR) with your changes
-4. PRs will be manually reviewed; incomplete or incorrect submissions may be closed
+> [!IMPORTANT]
+> Check out [CONTRIBUTING.md](CONTRIBUTING.md) for details regarding how to contribute to each module.
 
 ## Available Modules
 
