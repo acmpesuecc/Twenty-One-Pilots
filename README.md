@@ -13,8 +13,6 @@ Maintainer : [Pranav M](https://github.com/pranav0x0112)
 >├─ tb.sv        <- Testbench
 >└─ waveform.png <- Screenshot showing module works
 >```
-
-> [!IMPORTANT]
 > Check out [CONTRIBUTING.md](CONTRIBUTING.md) for details regarding how to contribute to each module.
 
 ## Available Modules
