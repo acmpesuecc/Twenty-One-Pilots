@@ -1,0 +1,81 @@
+$date
+	Fri Oct 17 22:17:44 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench $end
+$var wire 4 ! sr_o [3:0] $end
+$var reg 1 " clk $end
+$var reg 1 # reset $end
+$var reg 1 $ x_i $end
+$scope module DUT $end
+$var wire 1 " clk $end
+$var wire 1 # reset $end
+$var wire 1 $ x_i $end
+$var reg 4 % sr_o [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 %
+0$
+1#
+0"
+b0 !
+$end
+#5000
+1"
+#10000
+0"
+0#
+#15000
+1"
+#20000
+0"
+1$
+#25000
+b1 !
+b1 %
+1"
+#30000
+0"
+0$
+#35000
+b10 !
+b10 %
+1"
+#40000
+0"
+1$
+#45000
+b101 !
+b101 %
+1"
+#50000
+0"
+#55000
+b1011 !
+b1011 %
+1"
+#60000
+0"
+#65000
+b111 !
+b111 %
+1"
+#70000
+0"
+#75000
+b1111 !
+b1111 %
+1"
+#80000
+0"
