@@ -1,0 +1,213 @@
+$date
+	Sat Oct 18 03:06:20 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_Synchronous_FIFO $end
+$var wire 8 ! pop_data_o [7:0] $end
+$var wire 1 " full_o $end
+$var wire 1 # empty_o $end
+$var parameter 32 $ DATA_W $end
+$var parameter 32 % DEPTH $end
+$var reg 1 & clk $end
+$var reg 1 ' pop_i $end
+$var reg 8 ( push_data_i [7:0] $end
+$var reg 1 ) push_i $end
+$var reg 1 * reset $end
+$scope module dut $end
+$var wire 1 & clk $end
+$var wire 8 + pop_data_o [7:0] $end
+$var wire 1 ' pop_i $end
+$var wire 8 , push_data_i [7:0] $end
+$var wire 1 ) push_i $end
+$var wire 1 * reset $end
+$var wire 1 " full_o $end
+$var wire 1 # empty_o $end
+$var parameter 32 - DATA_W $end
+$var parameter 32 . DEPTH $end
+$var reg 4 / count [3:0] $end
+$var reg 3 0 r_ptr [2:0] $end
+$var reg 3 1 w_ptr [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 .
+b1000 -
+b1000 %
+b1000 $
+$end
+#0
+$dumpvars
+b0 1
+b0 0
+b0 /
+b0 ,
+bx +
+1*
+0)
+b0 (
+0'
+0&
+1#
+0"
+bx !
+$end
+#5000
+1&
+#10000
+b100100 (
+b100100 ,
+1)
+0&
+0*
+#15000
+b1 1
+b100100 !
+b100100 +
+0#
+b1 /
+1&
+#20000
+b10000001 (
+b10000001 ,
+0&
+#25000
+b10 /
+b10 1
+1&
+#30000
+b1001 (
+b1001 ,
+0&
+#35000
+b11 1
+b11 /
+1&
+#40000
+b1100011 (
+b1100011 ,
+0&
+#45000
+b100 /
+b100 1
+1&
+#50000
+0)
+0&
+#55000
+1&
+#60000
+1'
+0&
+#65000
+b11 /
+b10000001 !
+b10000001 +
+b1 0
+1&
+#70000
+0&
+#75000
+b1001 !
+b1001 +
+b10 0
+b10 /
+1&
+#80000
+0'
+0&
+#85000
+1&
+#90000
+b1101 (
+b1101 ,
+1)
+0&
+#95000
+b101 1
+b11 /
+1&
+#100000
+b10001101 (
+b10001101 ,
+0&
+#105000
+b100 /
+b110 1
+1&
+#110000
+b1100101 (
+b1100101 ,
+0&
+#115000
+b111 1
+b101 /
+1&
+#120000
+0)
+0&
+#125000
+1&
+#130000
+1'
+0&
+#135000
+b1100011 !
+b1100011 +
+b11 0
+b100 /
+1&
+#140000
+0&
+#145000
+b11 /
+b1101 !
+b1101 +
+b100 0
+1&
+#150000
+0&
+#155000
+b10001101 !
+b10001101 +
+b101 0
+b10 /
+1&
+#160000
+0&
+#165000
+b1 /
+b1100101 !
+b1100101 +
+b110 0
+1&
+#170000
+0&
+#175000
+bx !
+bx +
+b111 0
+1#
+b0 /
+1&
+#180000
+0&
+#185000
+1&
+#190000
+0'
+0&
+#195000
+1&
+#200000
+0&
+#205000
+1&
+#210000
+0&
