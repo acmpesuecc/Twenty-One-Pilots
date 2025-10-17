@@ -1,0 +1,89 @@
+`timescale 1ns/1ps
+
+module APB_Master(
+    input clk,
+    input reset,
+    input [1:0] cmd_i,
+    output reg psel_o,
+    output reg penable_o,
+    output reg [31:0] paddr_o,
+    output reg pwrite_o,
+    output reg [31:0] pwdata_o,
+    input pready_i,
+    input [31:0] prdata_i
+);
+
+    // FSM states
+    parameter IDLE = 2'b00;
+    parameter SETUP = 2'b01;
+    parameter ENABLE = 2'b10;
+
+    reg [1:0] state, next_state;
+    reg [31:0] last_data;
+    parameter ADDR = 32'hDEAD_CAFE;
+
+    // Sequential state transition
+    always @(posedge clk or posedge reset) begin
+        if (reset)
+            state <= IDLE;
+        else
+            state <= next_state;
+    end
+
+    // Next-state logic
+    always @(*) begin
+        next_state = state;
+        case (state)
+            IDLE:
+                if (cmd_i == 2'b01 || cmd_i == 2'b10)
+                    next_state = SETUP;
+                else
+                    next_state = IDLE;
+            SETUP: next_state = ENABLE;
+            ENABLE: next_state = (pready_i) ? IDLE : ENABLE;
+            default: next_state = IDLE;
+        endcase
+    end
+
+    // Output logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            psel_o <= 0;
+            penable_o <= 0;
+            paddr_o <= 0;
+            pwrite_o <= 0;
+            pwdata_o <= 0;
+            last_data <= 0;
+        end else begin
+            // Default outputs
+            psel_o <= 0;
+            penable_o <= 0;
+            paddr_o <= 0;
+            pwrite_o <= 0;
+            pwdata_o <= 0;
+
+            case (state)
+                IDLE: ;
+                SETUP: begin
+                    psel_o <= 1;
+                    paddr_o <= ADDR;
+                    if (cmd_i == 2'b01) begin
+                        pwrite_o <= 0;
+                        pwdata_o <= 0;
+                    end else if (cmd_i == 2'b10) begin
+                        pwrite_o <= 1;
+                        pwdata_o <= last_data + 1;
+                    end
+                end
+                ENABLE: begin
+                    psel_o <= 1;
+                    penable_o <= 1;
+                    paddr_o <= ADDR;
+                    if (cmd_i == 2'b01 && pready_i)
+                        last_data <= prdata_i;
+                end
+            endcase
+        end
+    end
+
+endmodule
