@@ -1,0 +1,22 @@
+module _2to1_Multiplexer_tb;
+
+reg[7:0]a_i,b_i;
+reg s_i;
+wire[7:0]y_o;
+
+_2to1_Multiplexer dui(a_i,b_i,s_i,y_o);
+
+initial
+begin
+a_i=8'b00000000;b_i=8'b00000000;s_i=1'b0;
+#5;a_i=8'b00000000;b_i=8'b00000000;s_i=1'b1;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b0;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b1;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b0;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b1;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b0;
+#5;a_i=8'b00000000;b_i=8'b00000001;s_i=1'b1;
+
+
+end
+endmodule
