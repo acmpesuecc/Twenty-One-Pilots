@@ -1,0 +1,112 @@
+`timescale 1ns/1ps
+
+// APB Master module
+// Features:
+// 1. Simple Design: APB is less complex compared to AHB/AXI.
+// 2. Low Power Consumption: Optimized for low-power peripherals.
+// 3. Lower Throughput: Designed for low-bandwidth peripherals.
+// 4. Uses basic APB signals: clock, reset, address, write/read signals, and data bus.
+
+module APB_Master (
+    input       wire        clk,
+    input       wire        reset,
+    input       wire [1:0]  cmd_i,
+
+    output reg              psel_o,
+    output reg              penable_o,
+    output reg [31:0]       paddr_o,
+    output reg              pwrite_o,
+    output reg [31:0]       pwdata_o,
+    input       wire        pready_i,
+    input       wire [31:0] prdata_i
+);
+
+    // APB state machine
+    typedef enum logic [1:0] {
+        IDLE   = 2'b00,
+        SETUP  = 2'b01,
+        ENABLE = 2'b10
+    } state_t;
+
+    state_t state, next_state;
+    reg [31:0] last_data;
+
+    localparam ADDR = 32'hDEAD_CAFE;
+
+    // State register
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset)
+            state <= IDLE;
+        else
+            state <= next_state;
+    end
+
+    // Next-state logic
+    always_comb begin
+        next_state = state;
+        case (state)
+            IDLE: begin
+                if (cmd_i == 2'b01 || cmd_i == 2'b10)
+                    next_state = SETUP;
+                else
+                    next_state = IDLE;
+            end
+            SETUP: next_state = ENABLE;
+            ENABLE: begin
+                if (pready_i)
+                    next_state = IDLE;
+                else
+                    next_state = ENABLE;
+            end
+            default: next_state = IDLE;
+        endcase
+    end
+
+    // APB outputs
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            psel_o    <= 0;
+            penable_o <= 0;
+            paddr_o   <= 32'b0;
+            pwrite_o  <= 0;
+            pwdata_o  <= 32'b0;
+            last_data <= 32'b0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    psel_o    <= 0;
+                    penable_o <= 0;
+                    paddr_o   <= 32'b0;
+                    pwrite_o  <= 0;
+                    pwdata_o  <= 32'b0;
+                end
+                SETUP: begin
+                    psel_o    <= 1;
+                    penable_o <= 0;
+                    paddr_o   <= ADDR;
+                    if (cmd_i == 2'b01) begin
+                        pwrite_o <= 0; // Read
+                    end else if (cmd_i == 2'b10) begin
+                        pwrite_o <= 1; // Write
+                        pwdata_o <= last_data + 1;
+                    end
+                end
+                ENABLE: begin
+                    penable_o <= 1;
+                    if (cmd_i == 2'b01 && pready_i)
+                        last_data <= prdata_i; // Capture read data
+                end
+                default: begin
+                    psel_o    <= 0;
+                    penable_o <= 0;
+                    paddr_o   <= 32'b0;
+                    pwrite_o  <= 0;
+                    pwdata_o  <= 32'b0;
+                end
+            endcase
+        end
+    end
+
+endmodule
+
+
