@@ -2,6 +2,9 @@
 
 Design and verify a APB slave interface which utilises the [memory interface module](../Simple_Memory_Interface/)
 
+>[!IMPORTANT]
+> Kindly solve Issue #20 before you take up this module.
+
 ## Interface Definition
 
 The module should have the following interface:

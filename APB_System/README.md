@@ -17,12 +17,13 @@ Design and verify a read/write system described below:
 ```
 > [!IMPORTANT]
 > The idea behind this problem is to exercise how a complex system can be created by connecting various small blocks together
+> Kindly solve Issues #2 and #3 before you take up this module.
 
 ## Interface Definition
 
 The module should have the following interface:
 
-```
+```SystemVerilog
 module APB_System (
   input       wire        clk,
   input       wire        reset,
@@ -32,6 +33,26 @@ module APB_System (
 
   output      wire        rd_valid_o,   - Should be asserted whenever read data is valid
   output      wire[31:0]  rd_data_o     - Read data
+);
+
+module arbiter (
+    input  wire clk,
+    input  wire reset,
+    input  wire read_i,
+    input  wire write_i,
+    input  wire fifo_full,
+    output reg  arb_write_en,
+    output reg  arb_read_en
+);
+
+module fifo #(parameter DEPTH = 16, WIDTH = 32) (
+    input  wire              clk,
+    input  wire              reset,
+    input  wire              write_en,
+    input  wire              read_en,
+    input  wire [WIDTH-1:0]  write_data,
+    output reg  [WIDTH-1:0]  read_data,
+    output wire              full
 );
 ```
 
