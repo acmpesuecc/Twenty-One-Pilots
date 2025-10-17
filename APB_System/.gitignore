@@ -1,0 +1,23 @@
+# Simulation outputs
+*.vcd
+*.vvp
+*_sim
+*.out
+
+# Waveform files
+*.vcd
+*.lxt
+*.lx2
+*.gtkw
+
+# Compiled simulation binaries
+simv
+*.daidir/
+
+# Log files
+*.log
+*.rpt
+
+# Build directories
+work/
+transcript
