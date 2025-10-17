@@ -1,0 +1,123 @@
+$date
+	Fri Oct 17 22:45:08 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module Shift_Register_tb $end
+$var wire 4 ! sr_o [3:0] $end
+$var reg 1 " clk $end
+$var reg 1 # reset $end
+$var reg 1 $ x_i $end
+$scope module uut $end
+$var wire 1 " clk $end
+$var wire 1 # reset $end
+$var wire 1 $ x_i $end
+$var reg 4 % sr_o [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 %
+0$
+1#
+0"
+b0 !
+$end
+#5
+1"
+#10
+0"
+0#
+#15
+1"
+#20
+0"
+1$
+#25
+b1 !
+b1 %
+1"
+#30
+0"
+0$
+#35
+b10 !
+b10 %
+1"
+#40
+0"
+1$
+#45
+b101 !
+b101 %
+1"
+#50
+0"
+#55
+b1011 !
+b1011 %
+1"
+#60
+0"
+0$
+#65
+b110 !
+b110 %
+1"
+#70
+0"
+#75
+b1100 !
+b1100 %
+1"
+#80
+b0 !
+b0 %
+0"
+1#
+#85
+1"
+#90
+0"
+0#
+#95
+1"
+#100
+0"
+1$
+#105
+b1 !
+b1 %
+1"
+#110
+0"
+#115
+b11 !
+b11 %
+1"
+#120
+0"
+#125
+b111 !
+b111 %
+1"
+#130
+0"
+#135
+b1111 !
+b1111 %
+1"
+#140
+0"
+#145
+1"
+#150
+0"
