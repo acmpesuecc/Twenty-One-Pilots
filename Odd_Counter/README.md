@@ -8,7 +8,7 @@ Design and verify an 8-bit odd counter
 > - Counter should reset to a value of 8'h1
 > - Counter should increment by 2 on every cycle
 
-The module should have the following interface:
+The module contains the following interface:
 
 ```SystemVerilog
 module Odd_Counter
@@ -17,3 +17,7 @@ module Odd_Counter
 
     output    logic[7:0]  cnt_o
 ```
+
+Screenshot Of Wave:-
+
+![Screnshoot](ss.png)
